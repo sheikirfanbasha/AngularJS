@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+
+<html>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script type = "text/javascript">
+		var app = angular.module('MyApp', []);
+		app.controller('MyCtrl1', handler);
+		app.controller('MyCtrl2', handler2);
+		function handler2($scope) {
+		    $scope.firstName= "irfan";
+		    $scope.lastName= "basha";
+		}
+		function handler($scope) {
+		    $scope.firstName= "John";
+		    $scope.lastName= "Doe";
+		}
+
+	</script>
+	<body>
+		<div  ng-app="MyApp">
+			<div ng-controller="MyCtrl1">
+			Full Name: {{firstName + " " + lastName}}
+			</div>
+			<div ng-controller="MyCtrl2">
+			Full Name: {{firstName + " " + lastName}}
+			</div>
+		</div>
+	</body>
+</html>
