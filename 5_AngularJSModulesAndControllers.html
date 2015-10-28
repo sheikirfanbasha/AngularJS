@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+
+<html>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script type = "text/javascript">
+		var app = angular.module('MyApp', []);
+		app.controller('MyCtrl', handler);
+		function handler($scope) {
+		    $scope.firstName= "John";
+		    $scope.lastName= "Doe";
+		}
+	</script>
+	<body>
+		<div ng-app="MyApp" ng-controller="MyCtrl">
+		Full Name: {{firstName + " " + lastName}}
+
+		</div>
+	</body>
+</html>
