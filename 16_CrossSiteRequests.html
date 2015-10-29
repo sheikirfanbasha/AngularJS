@@ -1,0 +1,46 @@
+<!-- cross site requests must have the following line in the server script. This is because modern browsers restrict the resources to be loaded from a single server for security reasons
+header("Access-Control-Allow-Origin: *");
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+
+		app.controller("myphpSQL", MySQLhandler);
+		function MySQLhandler($scope, $http){
+			$http.get("http://www.w3schools.com/angular/customers.php").success(function(response){
+				$scope.names = response.records;
+			});
+		}
+
+		app.controller("dotNetSQL", dotNethandler);
+		function dotNethandler($scope, $http){
+			$http.get("http://www.w3schools.com/angular/customers_sql.aspx").success(function(response){
+				$scope.names = response.records;
+			});
+		}
+
+	</script>
+</head>
+<body>
+	<div ng-app="myApp">
+		<h3> From PHP Server </h3>
+		<div ng-controller="myphpSQL">
+			<li ng-repeat="x in names">
+				{{x.Name + " : " + x.Country}}
+			</li>
+		</div>
+		<h3> From DotNet Server </h3>
+		<div ng-controller="dotNetSQL">
+			<li ng-repeat="x in names">
+				{{x.Name + " : " + x.Country}}
+			</li>
+		</div>
+		
+	</div>
+</body>
+</html>
