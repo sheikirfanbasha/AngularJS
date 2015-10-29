@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+		app.controller("myCtrl", handler);
+		function handler($scope, $http){
+			$scope.key = "irfan";
+			$http.get("http://www.w3schools.com/angular/customers.php").success(function(response){
+				$scope.names = response.records;
+			});
+		}
+	</script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<li ng-repeat="x in names">
+			{{x.Name + " : " + x.Country}}
+		</li>
+	</div>
+</body>
+</html>
